@@ -12,7 +12,7 @@ tags:
 
 ![](https://raw.githubusercontent.com/minggaowang/minggaowang.github.io/master/img/home-banner-tencent-alibaba-cloud.png)
 
-## 1 ElasticSearch**简介
+## 1 ElasticSearch简介
 
 ### **1.1** 什么是**ElasticSearch** 
 
