@@ -156,7 +156,7 @@ http.cors.allow‐origin: "*"
 
 ## **4 IK**分词器
 
-### 4.1什么是IK分词器
+### 4.1 什么是IK分词器
 
 我们在浏览器地址栏输入http://127.0.0.1:9200/_analyze? analyzer=chinese&pretty=true&text=我是程序员，浏览器显示效果如下
 
@@ -368,7 +368,7 @@ stdout，表示输出流，指从显示器输出
 
 （2）文件夹下创建mysql.conf （名称随意） ，内容如下：
 
-```properties
+```tex
 input { 
 	 jdbc { 
 	 	# mysql jdbc connection string to our backup databse 后面的test对应mysql中的test数据库
