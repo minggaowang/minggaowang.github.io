@@ -11,7 +11,7 @@ github_repo: "https://github.com/minggaowang/minggaowang.github.io.git" # you co
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
+sidebar-about-description: "学无止境!"
 sidebar-avatar: https://raw.githubusercontent.com/minggaowang/minggaowang.github.io/master/img/apple-touch-icon.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
