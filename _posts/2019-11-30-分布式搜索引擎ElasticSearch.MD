@@ -299,7 +299,7 @@ http://127.0.0.1:9200/_analyze?analyzer=ik_max_word&pretty=true&text=我是程�
 
 我们现在测试"我是中国人"，浏览器的测试效果如下：
 
-http://127.0.0.1:9200/_analyze?analyzer=ik_smart&pretty=true&text=我是中国人
+http://127.0.0.1:9200/_analyze?analyzer=ik_smart&pretty=true&text=我是中国
 
 ```json
 {
