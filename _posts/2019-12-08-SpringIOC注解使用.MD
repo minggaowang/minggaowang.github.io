@@ -645,7 +645,7 @@ public class MainConfig implements EmbeddedValueResolverAware {
 
 > **激活切换环境的方法** 
 >
-> 方法一:通过运行时jvm参数来切换 -Dspring.profiles.active=test|dev|prod
+> 方法一:通过运行时jvm参数来切换 -Dspring.profiles.active=test单引号dev单引号prod
 >
 > 方法二:通过代码的方式来激活
 >
