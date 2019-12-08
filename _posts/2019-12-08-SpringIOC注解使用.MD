@@ -66,7 +66,7 @@ public static void main( String[] args ){
 ```java
 ...
 @Configuration
-@ComponentScan(basePackages = {"com.tuling.testcompentscan"})
+@ComponentScan(basePackages = {"com.demo.testcompentscan"})
 public class MainConfig {
     ...
 }    
@@ -77,7 +77,7 @@ public class MainConfig {
 ```java
 ...
 @Configuration
-@ComponentScan(basePackages = {"com.tuling.testcompentscan"},excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class}),@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,value = {TulingService.class})})
+@ComponentScan(basePackages = {"com.demo.testcompentscan"},excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class}),@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,value = {DemoService.class})})
 public class MainConfig {
     ...
 }    
@@ -87,7 +87,7 @@ public class MainConfig {
 
 ```java
 @Configuration
-@ComponentScan(basePackages = {"com.tuling.testcompentscan"},includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class, Service.class})},useDefaultFilters = false)
+@ComponentScan(basePackages = {"com.demo.testcompentscan"},includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = {Controller.class, Service.class})},useDefaultFilters = false)
 public class MainConfig {
     ...
 }
@@ -97,7 +97,7 @@ public class MainConfig {
 
 - 注解形式的FilterType.ANNOTATION @Controller @Service @Repository @Compent
 
-- 指定类型的 FilterType.ASSIGNABLE_TYPE @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,value = {TulingService.class})
+- 指定类型的 FilterType.ASSIGNABLE_TYPE @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,value = {DemoService.class})
 
 - aspectj类型的 FilterType.ASPECTJ(不常用)
 
@@ -199,7 +199,7 @@ public Person person() {
 
 ```java
 ...
-public class TulingCondition implements Condition {
+public class DemoCondition implements Condition {
     /**
      *
      * @param context
@@ -468,7 +468,7 @@ public class DemoDao {
 public class DemoService {
     
     @Autowired
-    private TulingDao tulingDao;
+    private demoDao demoDao;
     ...
 }    
 ```
@@ -483,21 +483,21 @@ public class DemoService {
 >
 > 比如，我容器中有二个DemoDao类型的组件 一个叫demoDao 一个叫demoDao2
 >
-> 那么我们通过@AutoWired 来修饰的属性名称时tulingDao，那么拿就加载容器的tulingDao组件，若属性名称为 tulignDao2 那么他就加载的时tulingDao2组件
+> 那么我们通过@AutoWired 来修饰的属性名称时demoDao，那么拿就加载容器的demoDao组件，若属性名称为 demoDao2 那么他就加载的时demoDao2组件
 >
-> 假设我们需要指定特定的组件来进行装配，我们可以通过使用@Qualifier("tulingDao")来指定装配的组件 或者在配置类上的@Bean加上@Primary注解
+> 假设我们需要指定特定的组件来进行装配，我们可以通过使用@Qualifier("demoDao")来指定装配的组件 或者在配置类上的@Bean加上@Primary注解
 >
 > ```java
 > ...
 > @Autowired
-> @Qualifier("tulingDao")
-> private TulingDao tulingDao2;
+> @Qualifier("demoDao")
+> private DemoDao demoDao2;
 > ...
 > ```
 >
 > 假设我们容器中即没有demoDao 和demoDao2,那么在装配的时候就会抛出异常
 >
-> No qualifying bean of type 'com.demo.testautowired.TulingDao' available
+> No qualifying bean of type 'com.demo.testautowired.DemoDao' available
 >
 > 若我们想不抛异常 ，我们需要指定 required为false的时候可以了
 >
