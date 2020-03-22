@@ -128,5 +128,5 @@ public BeanDefinition getMergedBeanDefinition(String name) throws BeansException
 
 ## 4 总结
 
-如果是根 BeanDefinition 即 RootBeanDefinition 不需要合并，不存在 parent。如果是普通 BeanDefinition 即 GenericBeanDefinition 需要合并，存在 parent。经过合并后 GenericBeanDefinition 变成 RootBeanDefinition。这样合并的好处是：子类不需要复写父类的属性，减少了代码的冗余。
+如果是根 BeanDefinition 即 RootBeanDefinition 不需要合并，即不存在 parent。如果是普通 BeanDefinition 即 GenericBeanDefinition 需要合并，即存在 parent。经过合并后 GenericBeanDefinition 变成 RootBeanDefinition。这样合并的好处是：子类不需要复写父类的属性，减少了代码的冗余。
 
