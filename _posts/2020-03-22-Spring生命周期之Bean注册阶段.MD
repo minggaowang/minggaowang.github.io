@@ -18,9 +18,9 @@ tags:
   - BeanDefinitionRegistry
     - AliasRegistry
 
-## 2 Bean 注册入口 
+## 2 Bean 注册入口（源码分析）
 
-注册入口方法：DefaultListableBeanFactory#registerBeanDefinition，将 beanName 与 BeanDefinition 映射保存到 beanDefinitionMap 中，将 beanName 保存到 beanDefinitionNames 中。这样保证了 Bean 进行有序的示例化。
+注册入口方法：DefaultListableBeanFactory#registerBeanDefinition
 
 ```java
 ...
@@ -100,4 +100,4 @@ public void registerBeanDefinition(String beanName, BeanDefinition beanDefinitio
 
 ##  3 总结
 
-传入 beanName 和 beanDefinition 进行注册 Bean，将 beanName 与 beanDefinition  映射关系以及 beanName 集合进行保存，为后续实例化提供依据。
+传入 beanName 和 beanDefinition 进行 Bean 注册，将 beanName 与 BeanDefinition 映射保存到 beanDefinitionMap 中；将 beanName 保存到 beanDefinitionNames 中，这样为后续实例化提供依据。
