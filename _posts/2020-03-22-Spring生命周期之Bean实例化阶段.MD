@@ -20,7 +20,7 @@ tags:
 
 - 实例化前阶段
   - InstantiationAwareBeanPostProcessor#postProcessBeforeInstantiation
-- 实例化阶段
+- 实例化中阶段
   - 通过 JAVA 反射机制，即有参或者无参构造函数构建。
 - 实例化后阶段
   - InstantiationAwareBeanPostProcessor#postProcessAfterInstantiation
@@ -54,7 +54,7 @@ protected Object createBean(String beanName, RootBeanDefinition mbd, @Nullable O
 ...
 ```
 
-### 3.2 实例化阶段
+### 3.2 实例化中阶段
 
 方法调用入口：AbstractAutowireCapableBeanFactory#createBean
 
@@ -384,4 +384,89 @@ protected Object createBean(String beanName, RootBeanDefinition mbd, @Nullable O
 ...
 ```
 
-### 
+## 4 Bean 实例化各阶段接口回调示例
+
+```java
+...
+public class BeanInstantiationLifecycleDemo {
+
+    public static void main(String[] args) {
+
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        // 添加 BeanPostProcessor 实现（示例）
+        beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
+        // 基于 XML 资源 BeanDefinitionReader 实现
+        XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+        String[] locations = {"META-INF/dependency-lookup-context.xml",
+                "META-INF/bean-constructor-dependency-injection.xml"};
+        int beanNumbers = beanDefinitionReader.loadBeanDefinitions(locations);
+        System.out.println("已加载 BeanDefinition 数量：" + beanNumbers);
+        // 通过 Bean id 和类型进行依赖查找
+        User user = beanFactory.getBean("user", User.class);
+        System.out.println(user);
+
+        User superUser = beanFactory.getBean("superUser", User.class);
+        System.out.println(superUser);
+
+        // 构造器注入按照类型注入，resolveDependency
+        UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
+        System.out.println(userHolder);
+    }
+
+    static class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+
+        @Override
+        public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+
+            if (ObjectUtils.nullSafeEquals("superUser", beanName) && SuperUser.class.equals(beanClass)) {
+                // 把配置完成 superUser Bean 覆盖
+                return new SuperUser();
+            }
+            return null; // 保持 Spring IOC 容器的实例化操作
+        }
+
+        @Override
+        public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+
+            if (ObjectUtils.nullSafeEquals("user", beanName) && User.class.equals(bean.getClass())) {
+                User user = (User) bean;
+                user.setId(2L);
+                user.setName("niangao");
+                // user 对象不允许属性赋值（配置元信息 -> 属性值）
+                return false;
+            }
+            return true;
+        }
+
+        // user 是跳过 Bean 属性赋值（填入）
+        // superUser 也是完全跳过 Bean 实例化（Bean 属性赋值（填入））
+        // userHolder
+        @Override
+        public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+
+            // 对 userHolder Bean 进行拦截
+            if (ObjectUtils.nullSafeEquals("userHolder", beanName) && UserHolder.class.equals(bean.getClass())) {
+
+
+                MutablePropertyValues propertyValues;
+                if (pvs instanceof MutablePropertyValues) {
+                    propertyValues = (MutablePropertyValues) pvs;
+                } else {
+                    propertyValues = new MutablePropertyValues();
+                }
+                propertyValues.addPropertyValue("number", "1");
+
+                if (propertyValues.contains("description")) {
+                    // propertyValue value 是不可变的
+//                    PropertyValue propertyValue = propertyValues.getPropertyValue("description");
+                    propertyValues.removePropertyValue("description");
+                    propertyValues.addPropertyValue("description", "this user holder V2");
+                }
+                return propertyValues;
+            }
+            return null;
+        }
+    }
+}
+...
+```
