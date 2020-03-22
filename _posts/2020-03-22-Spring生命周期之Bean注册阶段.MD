@@ -100,4 +100,4 @@ public void registerBeanDefinition(String beanName, BeanDefinition beanDefinitio
 
 ##  3 总结
 
-传入 beanName 和 beanDefinition 进行 Bean 注册，将 beanName 与 BeanDefinition 映射保存到 beanDefinitionMap 中；将 beanName 保存到 beanDefinitionNames 中，这样为后续实例化提供依据。
+传入 beanName 和 beanDefinition 进行 Bean 注册，将 beanName 与 BeanDefinition 映射保存在beanDefinitionMap 中；将 beanName 保存在 beanDefinitionNames 中，这样为后续实例化提供依据。
