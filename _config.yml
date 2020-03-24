@@ -116,5 +116,8 @@ friends: [
     },{
          title: "斗鱼",
          href: "https://www.douyu.com/"
-     }
+     },{
+      title: "极客时间",
+      href: "https://time.geekbang.org/"
+    }
 ]
