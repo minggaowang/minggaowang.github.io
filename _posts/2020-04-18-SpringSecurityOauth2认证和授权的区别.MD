@@ -14,7 +14,7 @@ tags:
 
 ## 1 认证（Authentication）和授权（Authorization）的区别？
 
-你要登记，你需要出示你的 passport 和 ticket，passport 是为了证明你是张三，这就是 authentication；而 ticket是为了证明你张三确实买了票可以上飞机，这就是 authorization。
+你要登机，你需要出示你的 passport 和 ticket，passport 是为了证明你是张三，这就是 authentication；而 ticket是为了证明你张三确实买了票可以上飞机，这就是 authorization。
 
 ## 2 深入剖析
 
