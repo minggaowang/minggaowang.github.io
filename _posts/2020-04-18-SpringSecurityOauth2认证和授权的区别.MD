@@ -22,15 +22,15 @@ tags:
 
 ```java
 ...
-	<dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-oauth2</artifactId>
-    </dependency>  
-    <dependency>
-    <groupId>io.jsonwebtoken</groupId>
-        <artifactId>jjwt</artifactId>
-        <version>${jwt.version}</version>
-    </dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-oauth2</artifactId>
+</dependency>  
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt</artifactId>
+  <version>${jwt.version}</version>
+</dependency>
 ...    
 ```
 
@@ -56,6 +56,7 @@ Map<String, Object> postAccessToken(@RequestParam Map<String, String> parameters
 增加配置类 AuthorizationServerConfig 继承 AuthorizationServerConfigurerAdapter类，增加 @EnableAuthorizationServer 标注开启授权服务器功能，增加 @Configuration 标注说明配置类。
 
 ```java
+...
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
