@@ -105,6 +105,9 @@ friends: [
         title: "小马哥.Github",
         href: "https://github.com/mercyblitz/"
     },{
+      title: "小马哥.知识星球",
+      href: "https://wx.zsxq.com/dweb2/index/group/142185882122"
+    },{
         title: "segmentfault",
         href: "https://segmentfault.com/"
     },{
@@ -119,5 +122,8 @@ friends: [
      },{
       title: "极客时间",
       href: "https://time.geekbang.org/"
+    },{
+      title: "开课吧",
+      href: "https://www.kaikeba.com/?channel=pcpinzhuan"
     }
 ]
