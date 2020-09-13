@@ -125,5 +125,8 @@ friends: [
     },{
       title: "开课吧",
       href: "https://www.kaikeba.com/?channel=pcpinzhuan"
+    },{
+      title: "拉勾教育",
+      href: "https://kaiwu.lagou.com/"
     }
 ]
