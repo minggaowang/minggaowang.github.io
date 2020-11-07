@@ -24,7 +24,7 @@ App 安装后，第一次启动时需要登录（在某些页面提示需要登�
 
 9、如果刷新 Token 失败，则重新发起登录流程。
 
-![](D:\dev\study\minggaowang.github.io\img\login-1.jpg)
+![](https://raw.githubusercontent.com/minggaowang/minggaowang.github.io/master/img/login-1.jpg)
 
 # 三 遇到的坑
 
