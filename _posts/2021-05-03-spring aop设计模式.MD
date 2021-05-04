@@ -230,27 +230,8 @@
 
     - org.springframework.aop.framework.JdkDynamicAopProxy#invoke
 
-      ```java
-      ...
-      // Check whether we have any advice. If we don't, we can fallback on direct
-      // reflective invocation of the target, and avoid creating a MethodInvocation.
-      if (chain.isEmpty()) {
-          // We can skip creating a MethodInvocation: just invoke the target directly
-          // Note that the final invoker must be an InvokerInterceptor so we know it does
-          // nothing but a reflective operation on the target, and no hot swapping or fancy proxying.
-          Object[] argsToUse = AopProxyUtils.adaptArgumentsIfNecessary(method, args);
-          retVal = AopUtils.invokeJoinpointUsingReflection(target, method, argsToUse);
-      }else {
-        // We need to create a method invocation...
-        MethodInvocation invocation =
-          new ReflectiveMethodInvocation(proxy, target, method, args, targetClass, chain);
-        // Proceed to the joinpoint through the interceptor chain.
-        retVal = invocation.proceed();
-      }
-      ...
-
   - org.aspectj.lang.ProceedingJoinPoint
-
+  
 - JDK 举例
 
   - java.lang.Runnable
