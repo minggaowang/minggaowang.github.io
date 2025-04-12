@@ -41,7 +41,7 @@ mapper.update(
 
 在 DO 字段上添加这个更新策略，就是不会判断 null，任何时候都加入 sql
 
-**特别注意：这个策略，在高级版本中已经被 deprecated （3.5.3.2）**
+特别注意：这个策略，在高级版本中已经被 deprecated （3.5.3.2）
 
 ![](https://p3-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/a66b867b424d412f9f5004a6e42ec370~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdXpvbmc=:q75.awebp?rk3s=f64ab15b&x-expires=1744707214&x-signature=Ln8RuvEwNLeKGp4h6bGp7AFfamI%3D)
 
